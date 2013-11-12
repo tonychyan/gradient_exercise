@@ -1,0 +1,134 @@
+#examplecontainer {
+	width: 50%;
+	max-width: 600px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#examplebox {
+	height: 100px;
+	border: 2px solid black;
+}
+#examplebox {
+	/* the most basic of gradients */
+	background-image: -webkit-linear-gradient(red, blue);
+	background-image: -moz-linear-gradient(red, blue);
+	background-image: -ms-linear-gradient(red, blue);
+	background-image: -o-linear-gradient(red, blue);
+	background-image: linear-gradient(red, blue);
+	
+	/* most browsers have their own way of rendering gradients, so you'll need to specify. for the sake of easiness, i'm going to be using the -webkit- variant - change that to your browser of choice. */
+	
+	/* you can control where the gradient starts, and which direction it goes. 
+	 * 
+	 * background-image: -webkit-linear-gradient(left, red, blue);
+	 * background-image: -webkit-linear-gradient(45deg, red, blue);
+	 * background-image: -webkit-linear-gradient(-120deg, red, blue);
+	 * 
+	 * degrees are counted from a default of "left" - positive is counterclockwise, negative is clockwise.
+	 */
+	
+	/* you can have more than two colors in a gradient, too. you can declare them in any css-compatible way.
+	 * 
+	 * background-image: -webkit-linear-gradient(left, red, blue, green);
+	 * background-image: -webkit-linear-gradient(left, red, blue, green, #FFFFFF, rgb(80,120,150));
+	 * 
+	 * the browser will automatically space out the colors evenly - we can override this by specifically declaring at what point should the gradient arrive at a certain color. the first and last colors are considered to be at the beginning and end of the gradient - 0% and 100% accordingly.
+	 * 
+	 * background-image: -webkit-linear-gradient(left, red, blue 50%, green, #FFFFFF, rgb(80,120,150));
+	 * 
+	 * this means that the first half of the gradient will be from red to blue, then from 50% to 66.6% is from blue to green, 66.6% to 83.3% is from green to #FFFFFF, and 83.3% to 100% (the end) is from #FFFFFF to rgb(80,120,150).
+	 * every color can have its own stop (but it doesn't have to!), and there are a variety of units, too.
+	 * 
+	 * background-image: -webkit-linear-gradient(left, red 0%, blue 6em, green 80%, #FFFFFF, rgb(80,120,150));
+	 */
+	
+	/* what happens if we specify a stopping point other than 0% or 100% for the beginning/last color?
+	 * 
+	 * background-image: -webkit-linear-gradient(left, red 20%, blue 6em, green 80%, #FFFFFF, rgb(80,120,150));
+	 * 
+	 * the gradient will render, up to that stopping point, the solid beginning/last color.
+	 */
+	
+	/* what happens if a stopping point is too early? what happens if a color is supposed to start, when another one is still changing?
+	 * 
+	 * background-image: -webkit-linear-gradient(left, red 0%, blue 6em, green 80%, #FFFFFF 70%, rgb(80,120,150));
+	 * 
+	 * the gradient will render normally, then sharply turn to the other color after the normal progression has finished.
+	 */
+	
+	/* colors can also be declared using rgba() - this means we've got transparency toys, too!
+	 * 
+	 * background-color: #0080D0;
+	 * background-image: -webkit-linear-gradient(left, rgba(0,0,0,1), rgba(50, 100, 150, 0.4), rgba(0,0,0,0.7));
+	 * 
+	 * you can have mutliple background-images on the same line!
+	 * 
+	 * background-image: -webkit-linear-gradient(left, rgba(0,0,0,1), rgba(50, 100, 150, 0.4), rgba(0,0,0,0.7)), url('background.gif');
+	 * 
+	 * the first image will be rendered as the top layer, then the second, etc. etc.
+	 */ 
+	 
+	 /* you can also repeat gradients, too.
+	  * 
+	  * background-image: -webkit-repeating-linear-gradient(left, red 0%, blue 15%);
+	  * 
+	  * since the gradient won't fill the regular background (note the 15%), the browser will repeat this gradient until it fills up everything.
+	  * there's a sharp turn where the gradient gets repeated, but that's an easy fix.
+	  * 
+	  * background-image: -webkit-repeating-linear-gradient(left, red 0%, blue 15%, red 25%);
+	  */
+	 
+	 /* we can combine these two tricks to create repeating, transparent gradients.
+	  * 
+	  * background-image: -webkit-linear-gradient(left, rgba(0,0,0,1), rgba(50, 100, 150, 0.4) 10%, rgba(0,0,0,0.7) 20%, rgba(0,0,0,1) 25%), url('background.gif');
+	  * 
+	  * you can even have multiple gradients in one line.
+	  * 
+	  * background-image: -webkit-linear-gradient(left, rgba(255,255,255,1), rgba(255,255,255,0)), -webkit-repeatin-linear-gradient(45deg, red, red 15px, white 15px, white 30px);
+	  */
+	 
+	 /* gradients can go anywhere a background could go. that means <p> tags, <h1> tags, <span> tags, or even <body> tags.
+	  * if you're using <body> be sure to have the following line of css code:
+	  * 
+	  * html {
+	  * 	min-height: 100%;
+	  * }
+	  * 
+	  * this ensures that you won't get any repeating backgrounds.
+	  */
+	 
+	 /* radial gradients are basically the same as linear gradients (same color stops, etc.), but slightly different.
+	  * 
+	  * some basic radial gradients, with familiar syntax:
+	  * 
+	  * background-image: -webkit-radial-gradient(red,blue);
+	  * background-image: -webkit-radial-gradient(red, blue 50%, green 70%, pink);
+	  */
+	 
+	 /* instead of controlling the "direction" of a linear gradient, you now control the "position" and "shape" of a radial gradient.
+	  * you can control the position of the circle like this:
+	  * 
+	  * background-image: -webkit-radial-gradient(30% 25%, red, blue);
+	  * background-image: -webkit-radial-gradient(50px 50px, red, blue);
+	  * background-image: -webkit-radial-gradient(center, red, blue);
+	  * 
+	  * and you can also control the "shape" somewhat.
+	  * 
+	  * background-image: -webkit-radial-gradient(30% 25%, circle, red, blue);
+	  * background-image: -webkit-radial-gradient(50px 50px, circle closest-corner, red, blue);
+	  * background-image: -webkit-radial-gradient(center, ellipse farthest-corner, red, blue);
+	  * 
+	  * there's plenty of keywords that you can use (google is your friend!), and webkit also allows you to control the axis of the shape directly (i.e., instead of "circle", something like "50px 100px")
+	  */
+	 
+	 /* just as before, you can also repeat and combine radial gradients.
+	  * 
+	  * background-image: -webkit-repeating-radial-gradient(0 0, circle, red 0%, blue 10%, red 20%);
+	  * background-image: -webkit-repeating-radial-gradient(0 0, circle, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 10%, rgba(0,0,0,0.7) 20%), url('background.gif');
+	  */
+}
+
+html {
+	min-height: 100%;
+}
